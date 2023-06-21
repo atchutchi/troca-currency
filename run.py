@@ -18,6 +18,25 @@ def get_all_exchange_rates(base_currency):
         return None
 
 
+def is_valid_currency_code(code):
+    """
+    Checks if the input string is a valid 3 letter currency code.
+    """
+    return len(code) == 3 and code.isalpha()
+
+
+def main():
+    while True:
+        # Input Source Currency
+        base_currency = input("Enter the base currency (e.g. USD): ").upper()
+        if not is_valid_currency_code(base_currency):
+            print("Please enter a valid 3-letter currency code.")
+            continue
+
+
+if __name__ == "__main__":
+    # Start
+    main()
 print("Welcome to Troca-Currency Converter!")
 print("Troca-Currency Converter is a straightforward tool for converting currencies.")
 print("Enter the base currency, the target currency, and the conversion amount.")
