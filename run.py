@@ -16,3 +16,9 @@ def get_all_exchange_rates(base_currency):
     except requests.exceptions.RequestException as e:
         print(f"Error fetching exchange rates: {e}")
         return None
+
+
+print("Welcome to Troca-Currency Converter!")
+print("Troca-Currency Converter is a straightforward tool for converting currencies.")
+print("Enter the base currency, the target currency, and the conversion amount.")
+print("Follow the instructions to complete the conversion.\n")
