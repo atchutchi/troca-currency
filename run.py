@@ -25,6 +25,16 @@ def is_valid_currency_code(code):
     return len(code) == 3 and code.isalpha()
 
 
+def is_valid_amount(amount):
+    """
+    Checks if the input string is a valid positive number.
+    """
+    try:
+        return float(amount) > 0
+    except ValueError:
+        return False
+
+
 def main():
     while True:
         # Input Source Currency
@@ -45,6 +55,15 @@ def main():
         if not is_valid_currency_code(target_currency):
             print("Please enter a valid 3-letter currency code.")
             continue
+
+
+        # Input Amount
+        amount = input("Enter the amount to be converted: ")
+        if not is_valid_amount(amount):
+            print("Please enter a valid positive number.")
+            continue
+        
+        amount = float(amount)
 
 
 if __name__ == "__main__":
