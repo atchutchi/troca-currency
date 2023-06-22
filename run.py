@@ -66,6 +66,15 @@ def main():
         amount = float(amount)
 
 
+        # Calculate Conversion
+        rate = exchange_rates.get(target_currency)
+        if rate:
+            converted_amount = rate * amount
+            print(f"{amount} {base_currency} is equal to {converted_amount:.2f} {target_currency}.")
+        else:
+            print(f"Exchange rate for {target_currency} not available.")
+
+
 if __name__ == "__main__":
     # Start
     main()
