@@ -75,6 +75,12 @@ def main():
             print(f"Exchange rate for {target_currency} not available.")
 
 
+        # if user wants to do another conversion
+        another_conversion = input("Do you want to make another conversion? (Y/N): ").upper()
+        if another_conversion != 'Y':
+            break
+
+
 if __name__ == "__main__":
     # Start
     main()
