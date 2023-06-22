@@ -34,6 +34,19 @@ def main():
             continue
 
 
+        # Looking for conversion rates for a base currency
+        exchange_rates = get_all_exchange_rates(base_currency)
+        if not exchange_rates:
+            continue
+
+
+        # Input Target Currency
+        target_currency = input("Enter the target currency to convert to (e.g. EUR): ").upper()
+        if not is_valid_currency_code(target_currency):
+            print("Please enter a valid 3-letter currency code.")
+            continue
+
+
 if __name__ == "__main__":
     # Start
     main()
