@@ -36,6 +36,11 @@ def is_valid_amount(amount):
 
 
 def main():
+
+    print("Welcome to Troca-Currency Converter!")
+    print("Troca-Currency Converter is a straightforward tool for converting currencies.")
+    print("Enter the base currency, the target currency, and the conversion amount.")
+    print("Follow the instructions to complete the conversion.\n")
     while True:
         # Input Source Currency
         base_currency = input("Enter the base currency (e.g. USD): ").upper()
@@ -84,7 +89,4 @@ def main():
 if __name__ == "__main__":
     # Start
     main()
-print("Welcome to Troca-Currency Converter!")
-print("Troca-Currency Converter is a straightforward tool for converting currencies.")
-print("Enter the base currency, the target currency, and the conversion amount.")
-print("Follow the instructions to complete the conversion.\n")
+print("Thank you for using Troca-Currency Converter!")
