@@ -69,10 +69,35 @@ def save_conversion_to_history(base_currency, target_currency, amount, converted
     HISTORY_WORKSHEET.append_row(list(history_record.values()))
 
 
+def view_conversion_history():
+    # Access the 'history' worksheet
+    history_worksheet = SHEET.worksheet("history")
+
+    # Retrieve all records from the 'history' worksheet
+    all_records = history_worksheet.get_all_records()
+
+    # If no records are present, print a message and return
+    if not all_records:
+        print("No conversion history found.")
+        return
+
+    # Print the conversion history
+    print("Conversion History:")
+    for record in all_records:
+        print(f"From {record['base_currency']} to {record['target_currency']}: {record['original_amount']} -> {record['converted_amount']} at {record['timestamp']}")
+
+
 # Main function where the conversion happens
 def main():
     print("Welcome to Troca-Currency Converter!")
     while True:
+        print("\n1. Convert currency\n2. View conversion history\n")
+        choise = input("Enter your choice:")
+
+        if choice == '2':
+            view_conversion_history()
+            continue
+
         base_currency = input("Enter the base currency (e.g. USD): ").upper()
         if not is_valid_currency_code(base_currency):
             print("Please enter a valid 3-letter currency code.")
