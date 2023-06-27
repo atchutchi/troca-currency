@@ -103,6 +103,9 @@ def main():
             # If the rate is obtained, perform the conversion
             converted_amount = rate * amount
             print(f"{amount} {base_currency} is equal to {converted_amount:.2f} {target_currency}.")
+            
+            # Save the conversion to the history
+            save_conversion_to_history(base_currency, target_currency, amount, converted_amount)
         else:
             print(f"Exchange rate for {target_currency} not available.")
 
