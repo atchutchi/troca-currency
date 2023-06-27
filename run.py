@@ -19,10 +19,8 @@ SHEET = GSPREAD_CLIENT.open('exchange_currency')
 # Access the 'codes' worksheet from the sheet
 WORKSHEET = SHEET.worksheet("codes")
 
-
 # Access the 'history' worksheet from the sheet
 HISTORY_WORKSHEET = SHEET.worksheet("history")
-
 
 # Function to retrieve exchange rate from Google Sheets
 def get_rate_from_sheet(base_currency, target_currency):
@@ -32,7 +30,6 @@ def get_rate_from_sheet(base_currency, target_currency):
         if record['code'] == base_currency and record['code'] == target_currency:
             return record['exchange_rate']
     return None
-
 
 # Function to fetch exchange rates using the 'exchangerate.host' API
 def get_all_exchange_rates(base_currency):
@@ -46,7 +43,6 @@ def get_all_exchange_rates(base_currency):
         print(f"Error fetching exchange rates: {e}")
         return None
 
-
 # Function to validate a currency code
 def is_valid_currency_code(code):
     return len(code) == 3 and code.isalpha()
@@ -58,7 +54,6 @@ def is_valid_amount(amount):
     except ValueError:
         return False
 
-
 def save_conversion_to_history(base_currency, target_currency, amount, converted_amount):
     history_record = {
         'base_currency': base_currency,
@@ -68,13 +63,9 @@ def save_conversion_to_history(base_currency, target_currency, amount, converted
     }
     HISTORY_WORKSHEET.append_row(list(history_record.values()))
 
-
 def view_conversion_history():
-    # Access the 'history' worksheet
-    history_worksheet = SHEET.worksheet("history")
-
     # Retrieve all records from the 'history' worksheet
-    all_records = history_worksheet.get_all_records()
+    all_records = HISTORY_WORKSHEET.get_all_records()
 
     # If no records are present, print a message and return
     if not all_records:
@@ -86,18 +77,8 @@ def view_conversion_history():
     for record in all_records:
         print(f"From {record['base_currency']} to {record['target_currency']}: {record['original_amount']} -> {record['converted_amount']} at {record['timestamp']}")
 
-
-# Main function where the conversion happens
-def main():
-    print("Welcome to Troca-Currency Converter!")
+def convert_currency():
     while True:
-        print("\n1. Convert currency\n2. View conversion history\n")
-        choise = input("Enter your choice:")
-
-        if choice == '2':
-            view_conversion_history()
-            continue
-
         base_currency = input("Enter the base currency (e.g. USD): ").upper()
         if not is_valid_currency_code(base_currency):
             print("Please enter a valid 3-letter currency code.")
@@ -128,20 +109,33 @@ def main():
             # If the rate is obtained, perform the conversion
             converted_amount = rate * amount
             print(f"{amount} {base_currency} is equal to {converted_amount:.2f} {target_currency}.")
-            
+
             # Save the conversion to the history
             save_conversion_to_history(base_currency, target_currency, amount, converted_amount)
         else:
             print(f"Exchange rate for {target_currency} not available.")
 
-        # Ask the user if they want to make another conversion
-        another_conversion = input("Do you want to make another conversion? (Y/N): ").upper()
-        if another_conversion != 'Y':
+        break
+
+def main():
+    print("Welcome to Troca-Currency Converter!")
+    while True:
+        print("\n1. Convert currency\n2. View conversion history\n")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            convert_currency()
+        elif choice == '2':
+            view_conversion_history()
+        else:
+            print("Invalid choice, please select 1 or 2")
+
+        another_operation = input("\nDo you want to perform another operation? (Y/N): ").upper()
+        if another_operation != 'Y':
             break
 
+    # End message after the conversions
+    print("Thank you for using Troca-Currency Converter!")
 
 if __name__ == "__main__":
     main()
-
-# End message after the conversions
-print("Thank you for using Troca-Currency Converter!")
