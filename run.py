@@ -2,6 +2,7 @@
 import requests
 import gspread
 from google.oauth2.service_account import Credentials
+from datetime import datetime
 
 # Define the scope for Google Sheets API
 SCOPE = [
@@ -76,6 +77,24 @@ def view_conversion_history():
     print("Conversion History:")
     for record in all_records:
         print(f"From {record['base_currency']} to {record['target_currency']}: {record['original_amount']} -> {record['converted_amount']} at {record['timestamp']}")
+
+
+def save_conversion_to_history(base_currency, target_currency, amount, converted_amount):
+    # Get the current date and time
+    now = datetime.now()
+
+    # Format the datetime object to match the format used by Google Sheets
+    timestamp = now.strftime("%m/%d/%Y %H:%M:%S")
+
+    history_record = {
+        'base_currency': base_currency,
+        'target_currency': target_currency,
+        'amount': amount,
+        'converted_amount': converted_amount,
+        'timestamp': timestamp
+    }
+    HISTORY_WORKSHEET.append_row(list(history_record.values()))
+
 
 def convert_currency():
     while True:
