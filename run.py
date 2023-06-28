@@ -23,6 +23,7 @@ WORKSHEET = SHEET.worksheet("codes")
 # Access the 'history' worksheet from the sheet
 HISTORY_WORKSHEET = SHEET.worksheet("history")
 
+
 # Function to retrieve exchange rate from Google Sheets
 def get_rate_from_sheet(base_currency, target_currency):
     all_records = WORKSHEET.get_all_records()
@@ -31,6 +32,7 @@ def get_rate_from_sheet(base_currency, target_currency):
         if record['code'] == base_currency and record['code'] == target_currency:
             return record['exchange_rate']
     return None
+
 
 # Function to fetch exchange rates using the 'exchangerate.host' API
 def get_all_exchange_rates(base_currency):
@@ -44,9 +46,11 @@ def get_all_exchange_rates(base_currency):
         print(f"Error fetching exchange rates: {e}")
         return None
 
+
 # Function to validate a currency code
 def is_valid_currency_code(code):
     return len(code) == 3 and code.isalpha()
+
 
 # Function to validate the conversion amount
 def is_valid_amount(amount):
@@ -54,6 +58,7 @@ def is_valid_amount(amount):
         return float(amount) > 0
     except ValueError:
         return False
+
 
 def save_conversion_to_history(base_currency, target_currency, amount, converted_amount):
     history_record = {
@@ -63,6 +68,7 @@ def save_conversion_to_history(base_currency, target_currency, amount, converted
         'converted_amount': converted_amount
     }
     HISTORY_WORKSHEET.append_row(list(history_record.values()))
+
 
 def view_conversion_history():
     # Retrieve all records from the 'history' worksheet
@@ -136,6 +142,7 @@ def convert_currency():
 
         break
 
+
 def main():
     print("Welcome to Troca-Currency Converter!")
     while True:
@@ -155,6 +162,7 @@ def main():
 
     # End message after the conversions
     print("Thank you for using Troca-Currency Converter!")
+
 
 if __name__ == "__main__":
     main()
