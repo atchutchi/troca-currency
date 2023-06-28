@@ -1,32 +1,56 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Troca-Currency
 
-Welcome,
+## Overview
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+Troca-Currency is a Python-based application that enables users to convert currencies using real-time exchange rates from the Google Sheets and alternatively 'exchangerate.host' API. Additionally, the application stores the conversion history in a Google Sheets document, providing an easily accessible log of past conversions with Date and Time of the conversion.
 
-## Reminders
+[Here is the live version of the project](https://troca-currency-3e6445701967.herokuapp.com/)
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+![XOX Winners Resposive](./assets/images/site.png)
 
-## Creating the Heroku app
+## Usage
+Upon running the script, users will be greeted with a main menu where they can choose to convert currency or view conversion history.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+When converting currency, users will be asked to input the base currency, the target currency, and the amount to be converted. If the exchange rate is available, the converted amount will be displayed and stored in the 'history' worksheet in the Google Sheets document.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+When viewing conversion history, users will see a list of all past conversions, including the base currency, target currency, original amount, converted amount, and the date and time of conversion.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Features
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+## Data Model
 
-Connect your GitHub repository and deploy as normal.
+## Testing
 
-## Constraints
+### Validator Testing
+**PEP8CI**
+- No error were returned from [pep8ci.herokuapp](https://pep8ci.herokuapp.com/)
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Deployment
+This project was deployed using Code Institute's mock terminal for Heroku
 
----
+- Steps for deployments:
+    - Fork on clone this repository
+    - Create a new Heroku app
+    - Set the buildbacks to Python and NodeJS in order
+    - Link the Heroku app to the repository
+    - Click on Deploy
 
-Happy coding!
+
+## Credits
+
+### Content
+- Google Sheets based model taken from [ablebits](https://www.ablebits.com/office-addins-blog/currency-conversion-google-sheets/).
+
+### Media
+- Screenshot of the responsive where taken from [ui.dev](https://ui.dev/amiresponsive?url=https://troca-currency-3e6445701967.herokuapp.com/).
+
+### Language Used
+- Python
+
+### Codes
+- API used for conversion currency [exchangerate.host](https://exchangerate.host/#/)
+- [Geeksforgeeks Currency Converter in Python](https://www.geeksforgeeks.org/currency-converter-in-python/)
+- [Requests:HTTP](https://docs.python-requests.org/en/latest/user/quickstart/#make-a-request)
+
+### Deployment
+- Code Institute for the deployment terminar
