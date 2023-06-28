@@ -6,7 +6,7 @@ Troca-Currency is a Python-based application that enables users to convert curre
 
 [Here is the live version of the project](https://troca-currency-3e6445701967.herokuapp.com/)
 
-![XOX Winners Resposive](./assets/images/site.png)
+![Troca-Currency Resposive](./assets/images/site.png)
 
 ## Usage
 Upon running the script, users will be greeted with a main menu where they can choose to convert currency or view conversion history.
@@ -18,6 +18,9 @@ When viewing conversion history, users will see a list of all past conversions, 
 ## Features
 
 ## Data Model
+
+## Future Improvements
+- Allow users to delete conversion history.
 
 ## Testing
 
