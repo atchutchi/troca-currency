@@ -17,12 +17,36 @@ When viewing conversion history, users will see a list of all past conversions, 
 
 ## Features
 
+### Existing Features
+- The application asks you to choose between 2 types of services 1 perform a conversion and 2 see the history of past conversions.
+![Landing page](./assets/images/screenshot1.png)
+
+- Users can convert any amount from one currency to another using real-time exchange rates.
+![Convert currency](./assets/images/screenshot2.png)
+
+- Users can view their past conversions, which are stored in a Google Sheets document.
+![View conversion history](./assets/images/screenshot1.png)
+
 ## Data Model
+The application's data model consists of two primary data entities, namely the currency codes (String e.g XOF, CVE, EUR, BTC) with their associated exchange rates (Float), and a conversion history Base Currency (String), Target Currency (String), Amount (Float), Converted Amount (Float) and Timestamp (String) of all past conversions. 
+The Google Sheets document, with which the application interacts, serves as the database. It contains separate worksheets for the currency codes with their exchange rates, and the conversion history.
 
 ## Future Improvements
 - Allow users to delete conversion history.
 
 ## Testing
+Manual testing has been performed on the application:
+- 
+
+
+### Bugs
+- When I was trying to deploy, I got the error
+<sub>traceback (most recent call last):
+file "/app/run.py", line 1 in <module> 
+import requests
+ModuleNotFoundError: No module named 'requests'</sub>
+
+### Remaining Bugs
 
 ### Validator Testing
 **PEP8CI**
