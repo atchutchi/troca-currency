@@ -15,6 +15,7 @@ When converting currency, users will be asked to input the base currency, the ta
 
 When viewing conversion history, users will see a list of all past conversions, including the base currency, target currency, original amount, converted amount, and the date and time of conversion.
 
+
 ## Features
 
 ### Existing Features
@@ -36,7 +37,8 @@ The Google Sheets document, with which the application interacts, serves as the 
 
 ## Testing
 Manual testing has been performed on the application:
-- 
+- The tests were performed on my gitpod terminal and on heroku.
+- Passed to validator pep8ci.herokuapp and no error were returned from.
 
 
 ### Bugs
@@ -49,11 +51,15 @@ import requests
 ModuleNotFoundError: No module named 'requests' 
 ```
 
+
 ### Remaining Bugs
+- No Bugs remaining
+
 
 ### Validator Testing
 **PEP8CI**
 - No error were returned from [pep8ci.herokuapp](https://pep8ci.herokuapp.com/)
+
 
 ## Deployment
 This project was deployed using Code Institute's mock terminal for Heroku
