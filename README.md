@@ -40,11 +40,14 @@ Manual testing has been performed on the application:
 
 
 ### Bugs
-- When I was trying to deploy, I got the error
-<sub>traceback (most recent call last):
+- When I was trying to deploy, I got the error below, but the error was the result that after I did the requirements `pip freeze > requirements.txt` my requirements file didn't update I tried to install the request, but it appeared that it was already installed, I tried to use other codes on the internet but I ended up solving it using the help of the Tutor Guide of the Code Institute.
+
+```
+traceback (most recent call last):
 file "/app/run.py", line 1 in <module> 
 import requests
-ModuleNotFoundError: No module named 'requests'</sub>
+ModuleNotFoundError: No module named 'requests' 
+```
 
 ### Remaining Bugs
 
