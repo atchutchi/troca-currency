@@ -36,9 +36,17 @@ The Google Sheets document, with which the application interacts, serves as the 
 - Allow users to delete conversion history.
 
 ## Testing
-Manual testing has been performed on the application:
-- The tests were performed on my gitpod terminal and on heroku.
-- Passed to validator pep8ci.herokuapp and no error were returned from.
+
+**Problem**
+During the mentoring section with my Mentor Cans we conducted tests together to see how the code was working. 
+In my original implementation, i provided the user with a choice between two options:
+    1. Convert currency
+    2. view conversion history
+The user was then prompted to enter their choice, with the expectation that they would enter '1' or '2'. However, during the testing phase, it was noted that if a user entered any other value (such as a string or a different number), the program printed an "Invalid choice, please select 1 or 2" message. Still, it proceeded directly to the next prompt "Do you want to perform another operation?", without giving the user a chance to correct their choice.
+
+**Solution:**
+To resolve this issue, i integrated a while True loop around the choice input section. This loop continually prompts the user to make a valid choice until '1' or '2' is entered. If an invalid choice is made, the program will print the "Invalid choice, please select 1 or 2" message and then immediately prompt the user to "Enter your choice:" again, providing them with an opportunity to correct their mistake.
+**[Commit](https://github.com/atchutchi/troca-currency/commit/94fbdec4d4fc4c83d48b7590dbf6ad0878b2a76d)**
 
 
 ### Bugs
