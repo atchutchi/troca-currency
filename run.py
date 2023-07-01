@@ -169,7 +169,7 @@ def main():
                 get_and_print_currency_list()
                 break
             else:
-                print("Invalid choice, please select 1, 2 or 3")
+                print("Invalid choice!\nPlease select 1, 2 or 3:")
 
         another_operation = input("\nDo you want to perform another operation? (Y/N): ").upper()
         if another_operation != 'Y':
