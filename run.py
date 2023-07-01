@@ -171,7 +171,7 @@ def save_conversion_to_history(base_currency, target_currency, amount, converted
 
 
 def convert_currency():
-     """
+    """
     Handle the process of currency conversion.
 
     This function guides the user to input a base currency, target currency, and amount for conversion.
