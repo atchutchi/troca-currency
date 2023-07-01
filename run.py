@@ -24,8 +24,20 @@ WORKSHEET = SHEET.worksheet("codes")
 HISTORY_WORKSHEET = SHEET.worksheet("history")
 
 
-# Function to retrieve exchange rate from Google Sheets
 def get_rate_from_sheet(base_currency, target_currency):
+    """
+    Retrieve exchange rate from Google Sheets.
+
+    The function searches through all records in the Google Sheets document
+    to find an exchange rate for the provided base and target currency. 
+
+    Parameters:
+    base_currency (str): Code of the base currency.
+    target_currency (str): Code of the target currency.
+
+    Returns:
+    float: The exchange rate if found. None otherwise.
+    """
     all_records = WORKSHEET.get_all_records()
     for record in all_records:
         # If a record matches the base and target currency, return the exchange rate
@@ -34,8 +46,19 @@ def get_rate_from_sheet(base_currency, target_currency):
     return None
 
 
-# Function to fetch exchange rates using the 'exchangerate.host' API
 def get_all_exchange_rates(base_currency):
+    """
+    Fetch exchange rates for the given base currency.
+
+    This function uses the 'exchangerate.host' API to fetch the exchange rates of all 
+    currencies relative to the base currency.
+
+    Parameters:
+    base_currency (str): The code of the base currency.
+
+    Returns:
+    dict: A dictionary of exchange rates if the request is successful. None otherwise.
+    """
     url = f'https://api.exchangerate.host/latest?base={base_currency}'
     try:
         response = requests.get(url)
@@ -47,13 +70,33 @@ def get_all_exchange_rates(base_currency):
         return None
 
 
-# Function to validate a currency code
 def is_valid_currency_code(code):
+    """
+    Validate a currency code.
+
+    Checks if the provided string is a valid currency code. A valid code consists of three alphabetic characters.
+
+    Parameters:
+    code (str): The currency code to validate.
+
+    Returns:
+    bool: True if the code is valid, False otherwise.
+    """
     return len(code) == 3 and code.isalpha()
 
 
-# Function to validate the conversion amount
 def is_valid_amount(amount):
+    """
+    Validate the conversion amount.
+
+    Checks if the provided amount is a valid number and is greater than 0.
+
+    Parameters:
+    amount (str): The amount to validate.
+
+    Returns:
+    bool: True if the amount is valid, False otherwise.
+    """
     try:
         return float(amount) > 0
     except ValueError:
@@ -61,6 +104,18 @@ def is_valid_amount(amount):
 
 
 def save_conversion_to_history(base_currency, target_currency, amount, converted_amount):
+    """
+    Save a currency conversion to the history worksheet.
+
+    The function creates a new record with the base currency, target currency, conversion amount, and converted amount.
+    This record is then appended to the 'history' worksheet in the Google Sheets document.
+
+    Parameters:
+    base_currency (str): The code of the base currency.
+    target_currency (str): The code of the target currency.
+    amount (float): The amount in the base currency that was converted.
+    converted_amount (float): The resulting amount in the target currency.
+    """
     history_record = {
         'base_currency': base_currency,
         'target_currency': target_currency,
@@ -71,7 +126,12 @@ def save_conversion_to_history(base_currency, target_currency, amount, converted
 
 
 def view_conversion_history():
-    # Retrieve all records from the 'history' worksheet
+    """
+    Display the conversion history.
+
+    This function fetches all records from the 'history' worksheet in the Google Sheets document.
+    Each record includes the base currency, target currency, original amount, converted amount, and conversion time.
+    """
     all_records = HISTORY_WORKSHEET.get_all_records()
 
     # If no records are present, print a message and return
@@ -86,7 +146,15 @@ def view_conversion_history():
 
 
 def save_conversion_to_history(base_currency, target_currency, amount, converted_amount):
-    # Get the current date and time
+    """
+    Save a currency conversion into the history worksheet in Google Sheets.
+    
+    Parameters:
+    base_currency (str): The base currency code.
+    target_currency (str): The target currency code.
+    amount (float): The amount to be converted from the base currency.
+    converted_amount (float): The converted amount in the target currency.
+    """
     now = datetime.now()
 
     # Format the datetime object to match the format used by Google Sheets
@@ -103,6 +171,13 @@ def save_conversion_to_history(base_currency, target_currency, amount, converted
 
 
 def convert_currency():
+     """
+    Handle the process of currency conversion.
+
+    This function guides the user to input a base currency, target currency, and amount for conversion.
+    It validates the input, retrieves the exchange rate, performs the conversion, and displays the result.
+    The conversion is then saved to the history.
+    """
     while True:
         base_currency = input("Enter the base currency (e.g. USD): ").upper()
         if not is_valid_currency_code(base_currency):
@@ -144,7 +219,12 @@ def convert_currency():
 
 
 def get_and_print_currency_list():
-    # Get all records from the 'codes' worksheet
+    """
+    Fetch and display list of available currencies from the 'codes' worksheet.
+
+    This function retrieves all records from the 'codes' worksheet in the Google Sheets document
+    and prints the country name and corresponding currency code for each record.
+    """
     all_records = WORKSHEET.get_all_records()
     # Print the list of available currencies
     print("Available Currencies:")
@@ -153,6 +233,12 @@ def get_and_print_currency_list():
 
 
 def main():
+    """
+    The main function that runs the currency conversion program.
+
+    This function handles the user interface, prompting the user to make choices and providing feedback.
+    It loops until the user decides to stop the program.
+    """
     print("Welcome to Troca-Currency Converter!")
     while True:
         while True:
