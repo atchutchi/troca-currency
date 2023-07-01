@@ -143,6 +143,15 @@ def convert_currency():
         break
 
 
+def get_and_print_currency_list():
+    # Get all records from the 'codes' worksheet
+    all_records = WORKSHEET.get_all_records()
+    # Print the list of available currencies
+    print("Available Currencies:")
+    for record in all_records:
+        print(f"{record['country_name']}: {record['code']}")
+
+
 def main():
     print("Welcome to Troca-Currency Converter!")
     while True:
