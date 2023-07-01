@@ -77,7 +77,7 @@ def view_conversion_history():
     # If no records are present, print a message and return
     if not all_records:
         print("No conversion history found.")
-        return
+        
 
     # Print the conversion history
     print("Conversion History:")
