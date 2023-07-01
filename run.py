@@ -171,9 +171,15 @@ def main():
             else:
                 print("Invalid choice!\nPlease select 1, 2 or 3:")
 
-        another_operation = input("\nDo you want to perform another operation? (Y/N): ").upper()
-        if another_operation != 'Y':
-            break
+        while True:
+            another_operation = input("\nDo you want to perform another operation? (Y/N): ").upper()
+            if another_operation == 'Y':
+                break
+            elif another_operation == 'N':
+                print("Thank you for using Troca-Currency Converter!")
+                return
+            else:
+                print("Invalid input!\nPlease enter Y or N")
 
     # End message after the conversions
     print("Thank you for using Troca-Currency Converter!")
