@@ -146,15 +146,18 @@ def convert_currency():
 def main():
     print("Welcome to Troca-Currency Converter!")
     while True:
-        print("\n1. Convert currency\n2. View conversion history\n")
-        choice = input("Enter your choice: ")
+        while True:
+            print("\n1. Convert currency\n2. View conversion history\n")
+            choice = input("Enter your choice: ")
 
-        if choice == '1':
-            convert_currency()
-        elif choice == '2':
-            view_conversion_history()
-        else:
-            print("Invalid choice, please select 1 or 2")
+            if choice == '1':
+                convert_currency()
+                break
+            elif choice == '2':
+                view_conversion_history()
+                break
+            else:
+                print("Invalid choice, please select 1 or 2")
 
         another_operation = input("\nDo you want to perform another operation? (Y/N): ").upper()
         if another_operation != 'Y':
