@@ -83,6 +83,7 @@ This project was deployed using Code Institute's mock terminal for Heroku
     - Fork on clone this repository
     - Create a new Heroku app
     - Set the buildbacks to Python and NodeJS in order
+    - Make a Configuration Vars by adding creds.json
     - Link the Heroku app to the repository
     - Click on Deploy
 
@@ -102,6 +103,7 @@ This project was deployed using Code Institute's mock terminal for Heroku
 - API used for conversion currency [exchangerate.host](https://exchangerate.host/#/)
 - [Geeksforgeeks Currency Converter in Python](https://www.geeksforgeeks.org/currency-converter-in-python/)
 - [Requests:HTTP](https://docs.python-requests.org/en/latest/user/quickstart/#make-a-request)
+- Multi-line Docstrings from [Python Docstrings](https://www.geeksforgeeks.org/python-docstrings/)
 
 ### Deployment
 - Code Institute for the deployment terminar
