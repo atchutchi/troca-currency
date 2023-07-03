@@ -97,6 +97,7 @@ This project was deployed using Code Institute's mock terminal for Heroku
 
 ### Content
 - Google Sheets based model taken from [ablebits](https://www.ablebits.com/office-addins-blog/currency-conversion-google-sheets/).
+- The Google Sheet used: [the Sheet](./assets/documents/exchange_currency.xlsx).
 
 ### Media
 - Screenshot of the responsive where taken from [ui.dev](https://ui.dev/amiresponsive?url=https://troca-currency-3e6445701967.herokuapp.com/).
