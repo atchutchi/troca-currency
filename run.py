@@ -137,7 +137,6 @@ def view_conversion_history():
     # If no records are present, print a message and return
     if not all_records:
         print("No conversion history found.")
-        
 
     # Print the conversion history
     print("Conversion History:")
@@ -148,7 +147,6 @@ def view_conversion_history():
 def save_conversion_to_history(base_currency, target_currency, amount, converted_amount):
     """
     Save a currency conversion into the history worksheet in Google Sheets.
-    
     Parameters:
     base_currency (str): The base currency code.
     target_currency (str): The target currency code.

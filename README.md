@@ -9,24 +9,29 @@ Troca-Currency is a Python-based application that enables users to convert curre
 ![Troca-Currency Resposive](./assets/images/site.png)
 
 ## Usage
-Upon running the script, users will be greeted with a main menu where they can choose to convert currency or view conversion history.
+Upon running the script, users will be greeted with a main menu where they can choose to convert currency, view conversion history or view list of available currency.
 
 When converting currency, users will be asked to input the base currency, the target currency, and the amount to be converted. If the exchange rate is available, the converted amount will be displayed and stored in the 'history' worksheet in the Google Sheets document.
 
 When viewing conversion history, users will see a list of all past conversions, including the base currency, target currency, original amount, converted amount, and the date and time of conversion.
 
+When you choose view list of available currency, the user will receive the complete list of available countries with their currency code.
+
 
 ## Features
 
 ### Existing Features
-- The application asks you to choose between 2 types of services 1 perform a conversion and 2 see the history of past conversions.
-![Landing page](./assets/images/screenshot1.png)
+- The application asks you to choose between 3 types of services first perform a conversion, second see the history of past conversions and third view list of available currency.
+![Landing page](./assets/images/screenshot4.png)
 
 - Users can convert any amount from one currency to another using real-time exchange rates.
-![Convert currency](./assets/images/screenshot2.png)
+![Convert currency](./assets/images/screenshot5.png)
 
 - Users can view their past conversions, which are stored in a Google Sheets document.
 ![View conversion history](./assets/images/screenshot1.png)
+
+- User can request the list of all  available currency from Google Sheet.
+![View list of available currency](./assets/images/screenshot6.png)
 
 ## Data Model
 The application's data model consists of two primary data entities, namely the currency codes (String e.g XOF, CVE, EUR, BTC) with their associated exchange rates (Float), and a conversion history Base Currency (String), Target Currency (String), Amount (Float), Converted Amount (Float) and Timestamp (String) of all past conversions. 
