@@ -11,7 +11,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-# Load credentials from the 'creds.json' file and create a client to interact with Google Sheets
+# Load credentials 'creds.json' file and interact with Google Sheets
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -29,7 +29,7 @@ def get_rate_from_sheet(base_currency, target_currency):
     Retrieve exchange rate from Google Sheets.
 
     The function searches through all records in the Google Sheets document
-    to find an exchange rate for the provided base and target currency. 
+    to find an exchange rate for the provided base and target currency.
 
     Parameters:
     base_currency (str): Code of the base currency.
@@ -40,7 +40,7 @@ def get_rate_from_sheet(base_currency, target_currency):
     """
     all_records = WORKSHEET.get_all_records()
     for record in all_records:
-        # If a record matches the base and target currency, return the exchange rate
+        # Return exchange rate if currencies match
         if record['code'] == base_currency and record['code'] == target_currency:
             return record['exchange_rate']
     return None
@@ -50,14 +50,15 @@ def get_all_exchange_rates(base_currency):
     """
     Fetch exchange rates for the given base currency.
 
-    This function uses the 'exchangerate.host' API to fetch the exchange rates of all 
-    currencies relative to the base currency.
+    This function uses 'exchangerate.host' API to get exchange rates
+    for all currencies from a base currency.
 
     Parameters:
     base_currency (str): The code of the base currency.
 
     Returns:
-    dict: A dictionary of exchange rates if the request is successful. None otherwise.
+    dict: A dictionary of exchange rates if the request is successful.
+    None otherwise.
     """
     url = f'https://api.exchangerate.host/latest?base={base_currency}'
     try:
@@ -74,14 +75,15 @@ def get_all_available_currency(base_currency):
     """
     Fetch available currency codes for the given base currency.
 
-    This function uses the 'exchangerate.host' API to fetch the available currency codes
-    relative to the base currency.
+    This function uses the 'exchangerate.host' API to fetch the
+    available currency codes relative to the base currency.
 
     Parameters:
     base_currency (str): The code of the base currency.
 
     Returns:
-    list: A list of available currency codes if the request is successful. None otherwise.
+    list: A list of available currency codes if the request is successful.
+    None otherwise.
     """
     url = f'https://api.exchangerate.host/latest?base={base_currency}'
     try:
@@ -98,7 +100,8 @@ def is_valid_currency_code(code):
     """
     Validate a currency code.
 
-    Checks if the provided string is a valid currency code. A valid code consists of three alphabetic characters.
+    Checks if the provided string is a valid currency code.
+    A valid code consists of three alphabetic characters.
 
     Parameters:
     code (str): The currency code to validate.
@@ -131,8 +134,10 @@ def save_conversion_to_history(base_currency, target_currency, amount, converted
     """
     Save a currency conversion to the history worksheet.
 
-    The function creates a new record with the base currency, target currency, conversion amount, and converted amount.
-    This record is then appended to the 'history' worksheet in the Google Sheets document.
+    The function creates a new record with the base currency,
+    target currency, conversion amount, and converted amount.
+    This record is then appended to the 'history' worksheet in
+    the Google Sheets document.
 
     Parameters:
     base_currency (str): The code of the base currency.
@@ -153,8 +158,10 @@ def view_conversion_history():
     """
     Display the conversion history.
 
-    This function fetches all records from the 'history' worksheet in the Google Sheets document.
-    Each record includes the base currency, target currency, original amount, converted amount, and conversion time.
+    This function fetches all records from the 'history' worksheet
+    in the Google Sheets document.
+    Each record includes the base currency, target currency, original
+    amount, converted amount, and conversion time.
     """
     all_records = HISTORY_WORKSHEET.get_all_records()
 
@@ -170,7 +177,8 @@ def view_conversion_history():
 
 def save_conversion_to_history(base_currency, target_currency, amount, converted_amount):
     """
-    Save a currency conversion into the history worksheet in Google Sheets.
+    Save a currency conversion into the history worksheet
+    in Google Sheets.
     Parameters:
     base_currency (str): The base currency code.
     target_currency (str): The target currency code.
@@ -196,8 +204,10 @@ def convert_currency():
     """
     Handle the process of currency conversion.
 
-    This function guides the user to input a base currency, target currency, and amount for conversion.
-    It validates the input, retrieves the exchange rate, performs the conversion, and displays the result.
+    This function guides the user to input a base currency, target currency,
+    and amount for conversion.
+    It validates the input, retrieves the exchange rate, performs the conversion,
+    and displays the result.
     The conversion is then saved to the history.
     """
     while True:
@@ -256,10 +266,13 @@ def convert_currency():
 
 def get_and_print_currency_list():
     """
-    Fetch and display list of available currencies from the 'codes' worksheet.
+    Fetch and display list of available currencies from the 'codes'
+    worksheet.
 
-    This function retrieves all records from the 'codes' worksheet in the Google Sheets document
-    and prints the country name and corresponding currency code for each record.
+    This function retrieves all records from the 'codes' worksheet
+    in the Google Sheets document
+    and prints the country name and corresponding currency code for
+    each record.
     """
     all_records = WORKSHEET.get_all_records()
     # Print the list of Popular Currencies Exchange
@@ -272,7 +285,8 @@ def main():
     """
     The main function that runs the currency conversion program.
 
-    This function handles the user interface, prompting the user to make choices and providing feedback.
+    This function handles the user interface, prompting the user
+    to make choices and providing feedback.
     It loops until the user decides to stop the program.
     """
     print("Welcome to Troca-Currency Converter!")

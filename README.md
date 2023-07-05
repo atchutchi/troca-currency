@@ -106,6 +106,11 @@ To address this issue, the following changes were made:
 
 ### Validator Testing
 **PEP8CI**
+I run the Code Instituite CI Python Linter and appear this results mutliple times:
+- E501 line too long (86 > 79 characters)
+- W291 trailing whitespace
+
+
 - No error were returned from [pep8ci.herokuapp](https://pep8ci.herokuapp.com/)
 
 
