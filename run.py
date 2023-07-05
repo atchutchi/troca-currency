@@ -262,8 +262,8 @@ def get_and_print_currency_list():
     and prints the country name and corresponding currency code for each record.
     """
     all_records = WORKSHEET.get_all_records()
-    # Print the list of available currencies
-    print("Available Currencies:")
+    # Print the list of Popular Currencies Exchange
+    print("Popular Currencies Exchange:")
     for record in all_records:
         print(f"{record['country_name']}: {record['code']}")
 
@@ -278,7 +278,7 @@ def main():
     print("Welcome to Troca-Currency Converter!")
     while True:
         while True:
-            print("\n1. Convert currency\n2. View conversion history\n3. View list of available currencies\n")
+            print("\n1. Convert currency\n2. View conversion history\n3. View list of popular currencies\n")
             choice = input("Enter your choice: ")
 
             if choice == '1':
