@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "exchangesample",
+  "private_key_id": "34634643711cb8c4237945a1f8fe146e3b4995ce58",
+  "private_key": "-----BEGIN PRIVATE KEY-----\+FVvs9l1texVeI/aDn5h4QLjYhreLVB/9XnVyT251taj99reTGhS\n4ga9NFvnmrT3iu2hkkgwOhQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "exchange-sample@exchangesample.iam.gserviceaccount.com",
+  "client_id": "1071890475734457518",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v6/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/exchange-sample%40exchangesample.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+  }

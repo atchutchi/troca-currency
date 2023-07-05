@@ -116,7 +116,8 @@ This project was deployed using Code Institute's mock terminal for Heroku
     - Fork on clone this repository
     - Create a new Heroku app
     - Set the buildbacks to Python and NodeJS in order
-    - Make a Configuration Vars by adding creds.json
+    - Make a Configuration Vars by adding creds.sample.json (obtained on https://console.cloud.google.com/apis/library)
+    [Example](./assets/documents/creds_sample.json)
     - Link the Heroku app to the repository
     - Click on Deploy
 
