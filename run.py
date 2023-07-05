@@ -70,6 +70,30 @@ def get_all_exchange_rates(base_currency):
         return None
 
 
+def get_all_available_currency(base_currency):
+    """
+    Fetch available currency codes for the given base currency.
+
+    This function uses the 'exchangerate.host' API to fetch the available currency codes
+    relative to the base currency.
+
+    Parameters:
+    base_currency (str): The code of the base currency.
+
+    Returns:
+    list: A list of available currency codes if the request is successful. None otherwise.
+    """
+    url = f'https://api.exchangerate.host/latest?base={base_currency}'
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        return list(data['rates'].keys())
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching available currency codes: {e}")
+        return None
+
+
 def is_valid_currency_code(code):
     """
     Validate a currency code.
@@ -182,9 +206,23 @@ def convert_currency():
             print("Please enter a valid 3-letter currency code.")
             continue
 
+        # Check if base_currency is valid
+        available_currencies = get_all_available_currency(base_currency)
+        if available_currencies is None:
+            print("Failed to fetch available currency codes. Please try again.")
+            continue
+        if base_currency not in available_currencies:
+            print(f"{base_currency} is not a valid currency code. Please try again.")
+            continue
+
         target_currency = input("Enter the target currency to convert to (e.g. EUR): ").upper()
         if not is_valid_currency_code(target_currency):
             print("Please enter a valid 3-letter currency code.")
+            continue
+
+        # Check if target_currency is valid
+        if target_currency not in available_currencies:
+            print(f"{target_currency} is not a valid currency code. Please try again.")
             continue
 
         amount = input("Enter the amount to be converted: ")
