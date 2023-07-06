@@ -41,7 +41,8 @@ def get_rate_from_sheet(base_currency, target_currency):
     all_records = WORKSHEET.get_all_records()
     for record in all_records:
         # Return exchange rate if currencies match
-        if record['code'] == base_currency and record['code'] == target_currency:
+        if (record['code'] == base_currency and
+                record['code'] == target_currency):
             return record['exchange_rate']
     return None
 
@@ -130,7 +131,12 @@ def is_valid_amount(amount):
         return False
 
 
-def save_conversion_to_history(base_currency, target_currency, amount, converted_amount):
+def save_conversion_to_history(
+    base_currency,
+    target_currency,
+    amount,
+    converted_amount
+):
     """
     Save a currency conversion to the history worksheet.
 
@@ -160,6 +166,7 @@ def view_conversion_history():
 
     This function fetches all records from the 'history' worksheet
     in the Google Sheets document.
+
     Each record includes the base currency, target currency, original
     amount, converted amount, and conversion time.
     """
@@ -172,13 +179,25 @@ def view_conversion_history():
     # Print the conversion history
     print("Conversion History:")
     for record in all_records:
-        print(f"From {record['base_currency']} to {record['target_currency']}: {record['original_amount']} -> {record['converted_amount']} at {record['timestamp']}")
+        print("From {} to {}: {} -> {} at {}".format(
+            record['base_currency'],
+            record['target_currency'],
+            record['original_amount'],
+            record['converted_amount'],
+            record['timestamp']
+        ))
 
 
-def save_conversion_to_history(base_currency, target_currency, amount, converted_amount):
+def save_conversion_to_history(
+    base_currency,
+    target_currency,
+    amount,
+    converted_amount
+):
     """
     Save a currency conversion into the history worksheet
     in Google Sheets.
+
     Parameters:
     base_currency (str): The base currency code.
     target_currency (str): The target currency code.
@@ -206,8 +225,10 @@ def convert_currency():
 
     This function guides the user to input a base currency, target currency,
     and amount for conversion.
-    It validates the input, retrieves the exchange rate, performs the conversion,
-    and displays the result.
+
+    It validates the input, retrieves the exchange rate,
+    performs the conversion, and displays the result.
+
     The conversion is then saved to the history.
     """
     while True:
@@ -219,25 +240,41 @@ def convert_currency():
         # Check if base_currency is valid
         available_currencies = get_all_available_currency(base_currency)
         if available_currencies is None:
-            print("Failed to fetch available currency codes. Please try again.")
+            print(
+                "Failed to fetch available currency codes. Please try again."
+                )
             continue
         if base_currency not in available_currencies:
-            print(f"{base_currency} is not a valid currency code. Please try again.")
+            print(
+                f"{base_currency} is not a valid currency code.\n"
+                "Please try again."
+                )
             continue
 
-        target_currency = input("Enter the target currency to convert to (e.g. EUR): ").upper()
+        target_currency = input(
+            "Enter the target currency to convert to (e.g. EUR): "
+            ).upper()
         if not is_valid_currency_code(target_currency):
-            print("Please enter a valid 3-letter currency code.")
+            print(
+                "Please enter a valid 3-letter currency code."
+                )
             continue
 
         # Check if target_currency is valid
         if target_currency not in available_currencies:
-            print(f"{target_currency} is not a valid currency code. Please try again.")
+            print(
+                f"{target_currency} is not a valid currency code.\n"
+                "Please try again."
+                )
             continue
 
-        amount = input("Enter the amount to be converted: ")
+        amount = input(
+            "Enter the amount to be converted: "
+            )
         if not is_valid_amount(amount):
-            print("Please enter a valid positive number.")
+            print(
+                "Please enter a valid positive number."
+                )
             continue
 
         amount = float(amount)
@@ -254,12 +291,22 @@ def convert_currency():
         if rate:
             # If the rate is obtained, perform the conversion
             converted_amount = rate * amount
-            print(f"{amount} {base_currency} is equal to {converted_amount:.2f} {target_currency}.")
+            print(
+                f"{amount} {base_currency} is equal to "
+                f"{converted_amount:.2f} {target_currency}."
+                )
 
             # Save the conversion to the history
-            save_conversion_to_history(base_currency, target_currency, amount, converted_amount)
+            save_conversion_to_history(
+                base_currency,
+                target_currency,
+                amount,
+                converted_amount
+                )
         else:
-            print(f"Exchange rate for {target_currency} not available.")
+            print(
+                f"Exchange rate for {target_currency} not available."
+                )
 
         break
 
@@ -276,9 +323,13 @@ def get_and_print_currency_list():
     """
     all_records = WORKSHEET.get_all_records()
     # Print the list of Popular Currencies Exchange
-    print("Popular Currencies Exchange:")
+    print(
+        "Popular Currencies Exchange:"
+        )
     for record in all_records:
-        print(f"{record['country_name']}: {record['code']}")
+        print(
+            f"{record['country_name']}: {record['code']}"
+            )
 
 
 def main():
@@ -292,7 +343,11 @@ def main():
     print("Welcome to Troca-Currency Converter!")
     while True:
         while True:
-            print("\n1. Convert currency\n2. View conversion history\n3. View list of popular currencies\n")
+            print(
+                "\n1. Convert currency\n"
+                "2. View conversion history\n"
+                "3. View list of popular currencies\n"
+                )
             choice = input("Enter your choice: ")
 
             if choice == '1':
@@ -305,20 +360,30 @@ def main():
                 get_and_print_currency_list()
                 break
             else:
-                print("Invalid choice!\nPlease select 1, 2 or 3:")
+                print(
+                    "Invalid choice!\nPlease select 1, 2 or 3:"
+                    )
 
         while True:
-            another_operation = input("\nDo you want to perform another operation? (Y/N): ").upper()
+            another_operation = input(
+                "\nDo you want to perform another operation? (Y/N): "
+                ).upper()
             if another_operation == 'Y':
                 break
             elif another_operation == 'N':
-                print("Thank you for using Troca-Currency Converter!")
+                print(
+                    "Thank you for using Troca-Currency Converter!"
+                    )
                 return
             else:
-                print("Invalid input!\nPlease enter Y or N")
+                print(
+                    "Invalid input!\nPlease enter Y or N"
+                    )
 
     # End message after the conversions
-    print("Thank you for using Troca-Currency Converter!")
+    print(
+        "Thank you for using Troca-Currency Converter!"
+        )
 
 
 if __name__ == "__main__":
