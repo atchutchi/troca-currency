@@ -25,13 +25,13 @@ When you choose view list of popular currencies, the user will receive the compl
 ![Landing page](./assets/images/screenshot4.png)
 
 - Users can convert any amount from one currency to another using real-time exchange rates.
-![Convert currency](./assets/images/screenshot5.png)
+![Convert currency](./assets/images/testing1.png)
 
 - Users can view their past conversions, which are stored in a Google Sheets document.
-![View conversion history](./assets/images/screenshot1.png)
+![View conversion history](./assets/images/testing2.png)
 
 - User can request the list of all  list of popular currencies from Google Sheet.
-![View list of popular currencies](./assets/images/screenshot6.png)
+![View list of popular currencies](./assets/images/testing3.png)
 
 ## Data Model
 The application's data model consists of two primary data entities, namely the currency codes (String e.g XOF, CVE, EUR, BTC) with their associated exchange rates (Float), and a conversion history Base Currency (String), Target Currency (String), Amount (Float), Converted Amount (Float) and Timestamp (String) of all past conversions. 
@@ -44,25 +44,28 @@ The Google Sheets document, with which the application interacts, serves as the 
 
 ### Testing Steps
 1. Run the program
+![Testing 1](./assets/images/screenshot4.png)
     You will see the message "Welcome to Troca-Currency Converter!" printed on the console.
     - The program will present you with the following options:
         Enter '1' to convert currency.
         Enter '2' to view conversion history.
         Enter '3' to view the list of available currencies.
-![Testing 1](./assets/images/screenshot4.png)
 
 2. Choose option '1' by entering '1' and press Enter.
+![Testing 2](./assets/images/testing1.png)
     - You will be prompted to enter the base currency code (e.g., USD). Enter a valid       three-letter currency code and press Enter.
     - Next, you will be prompted to enter the target currency code (e.g., EUR). Enter a valid three-letter currency code and press Enter.
     - Enter the amount to be converted and press Enter.
     - The program will check if the entered currency codes are valid and whether the exchange rate is available. If any of the codes are invalid or the exchange rate is not available, you will be prompted to re-enter the currency codes.
+    ![Error 1](./assets/images/error1.png)
+
     - If the currency codes are valid and the exchange rate is available, the program will perform the currency conversion and display the converted amount.
     - The conversion will be saved to the history worksheet in Google Sheets.
     - After the conversion, the program will ask if you want to perform another operation, enter 'Y' to perform another operation or 'N' to exit the program. If you enter any other input, you will be prompted to enter a valid input.
-![Testing 2](./assets/images/testing2.png)
+    ![Error 2](./assets/images/error2.png)
 
 3. Choose option '2' by entering '2' and press Enter the program will fetch all records from the 'history' worksheet in the Google Sheets document.
-![Testing 3](./assets/images/testing4.png)
+![Testing 3](./assets/images/testing2.png)
 
 4. Choose option '3' by entering '3' and press Enter the program will fetch all records from the 'codes' worksheet in the Google Sheets document.
 - The program will print the message "Popular Currencies Exchange:" on the console.
