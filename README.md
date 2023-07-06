@@ -113,7 +113,7 @@ I run the Code Instituite CI Python Linter and appear this results mutliple time
 - E125 continuation line with same indent as next logical line
 - E129 visually indented line with same indent as next logical line
 
-I solved them all by using the (How to Write Beatiful Python Code With PEP 8)[https://realpython.com/python-pep8/#maximum-line-length-and-line-breaking].
+I solved them all by using the [How to Write Beatiful Python Code With PEP 8](https://realpython.com/python-pep8/#maximum-line-length-and-line-breaking).
 - The Commit showing how it was before and after: [Commit](https://github.com/atchutchi/troca-currency/commit/e47c41b62ce848f26c71d4bc44b83ca5d38b5a1e).
 
 No error were returned from [pep8ci.herokuapp](https://pep8ci.herokuapp.com/)
