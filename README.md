@@ -2,7 +2,7 @@
 
 ## Overview
 
-Troca-Currency is a Python-based application that enables users to convert currencies using real-time exchange rates from the Google Sheets and alternatively 'exchangerate.host' API. Additionally, the application stores the conversion history in a Google Sheets document, providing an easily accessible log of past conversions with Date and Time of the conversion.
+Troca-Currency is a Python-based application that enables users to convert currencies using real-time exchange rates from the Google Sheets and alternatively 'exchangerate.host' API. Additionally, the application stores the conversion history in a Google Sheets document, providing an easily accessible log of past conversions with Date and Time of the conversion, and provide the list of popular currencies.
 
 [Here is the live version of the project](https://troca-currency-3e6445701967.herokuapp.com/)
 
@@ -15,7 +15,7 @@ When converting currency, users will be asked to input the base currency, the ta
 
 When viewing conversion history, users will see a list of all past conversions, including the base currency, target currency, original amount, converted amount, and the date and time of conversion.
 
-When you choose view list of available currency, the user will receive the complete list of available countries with their currency code.
+When you choose view list of popular currencies, the user will receive the complete list of available countries with their currency code.
 
 
 ## Features
@@ -30,8 +30,8 @@ When you choose view list of available currency, the user will receive the compl
 - Users can view their past conversions, which are stored in a Google Sheets document.
 ![View conversion history](./assets/images/screenshot1.png)
 
-- User can request the list of all  available currency from Google Sheet.
-![View list of available currency](./assets/images/screenshot6.png)
+- User can request the list of all  list of popular currencies from Google Sheet.
+![View list of popular currencies](./assets/images/screenshot6.png)
 
 ## Data Model
 The application's data model consists of two primary data entities, namely the currency codes (String e.g XOF, CVE, EUR, BTC) with their associated exchange rates (Float), and a conversion history Base Currency (String), Target Currency (String), Amount (Float), Converted Amount (Float) and Timestamp (String) of all past conversions. 
@@ -160,6 +160,10 @@ ModuleNotFoundError: No module named 'requests'
 - [Geeksforgeeks Currency Converter in Python](https://www.geeksforgeeks.org/currency-converter-in-python/)
 - [Requests:HTTP](https://docs.python-requests.org/en/latest/user/quickstart/#make-a-request)
 - Multi-line Docstrings from [Python Docstrings](https://www.geeksforgeeks.org/python-docstrings/)
+- Write with a proper PEP 8 guidance [Real Python](https://realpython.com/python-pep8/#maximum-line-length-and-line-breaking)
 
 ### Deployment
 - Code Institute for the deployment terminar
+
+# Mentor
+- [Can Sücüllü](https://github.com/cansucullu) were consulted during the development process.
