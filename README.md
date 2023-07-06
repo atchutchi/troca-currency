@@ -45,7 +45,8 @@ The Google Sheets document, with which the application interacts, serves as the 
 ### Testing Steps
 1. Run the program
 ![Testing 1](./assets/images/screenshot4.png)
-    You will see the message "Welcome to Troca-Currency Converter!" printed on the console.
+
+    - You will see the message "Welcome to Troca-Currency Converter!" printed on the console.
     - The program will present you with the following options:
         Enter '1' to convert currency.
         Enter '2' to view conversion history.
@@ -68,7 +69,7 @@ The Google Sheets document, with which the application interacts, serves as the 
 ![Testing 3](./assets/images/testing2.png)
 
 4. Choose option '3' by entering '3' and press Enter the program will fetch all records from the 'codes' worksheet in the Google Sheets document.
-- The program will print the message "Popular Currencies Exchange:" on the console.
+    - The program will print the message "Popular Currencies Exchange:" on the console.
 ![Testing 4](./assets/images/testing3.png)
 
 ### Testing Bug
@@ -168,5 +169,5 @@ ModuleNotFoundError: No module named 'requests'
 ### Deployment
 - Code Institute for the deployment terminar
 
-# Mentor
+### Mentor
 - [Can Sücüllü](https://github.com/cansucullu) were consulted during the development process.
