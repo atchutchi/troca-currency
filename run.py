@@ -86,7 +86,7 @@ def get_all_available_currency(base_currency):
     list: A list of available currency codes if the request is successful.
     None otherwise.
     """
-    url = f'https://api.exchangerate.host/latest?base={base_currency}'
+    url = 'https://api.exchangerate.host/latest?base=USD'
     try:
         response = requests.get(url)
         response.raise_for_status()
